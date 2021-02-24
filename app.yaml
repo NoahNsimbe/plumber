@@ -1,0 +1,15 @@
+runtime: python38
+
+env_variables:
+  ENVIRONMENT: "PRODUCTION"
+  GOOGLE_APPLICATION_CREDENTIALS: gac.json
+
+entrypoint: gunicorn -b :8080 kyadondo_api.wsgi
+
+handlers:
+
+- url: /static
+  static_dir: static/
+
+- url: /.*
+  script: auto
